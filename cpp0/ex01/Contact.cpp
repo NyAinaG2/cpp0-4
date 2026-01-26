@@ -1,5 +1,4 @@
 #include "Contact.hpp"
-#include "header.hpp"
 
 Contact::Contact(void)
 {

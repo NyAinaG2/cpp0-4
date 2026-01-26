@@ -1,19 +1,21 @@
 #include "header.hpp"
+#include "PhoneBook.hpp"
 
-//index, first_name, last_name, nickname, Input the
 int	main(void)
 {
-	int quit = 0;
+	PhoneBook	phonebook;
 	std::string buff;
-	while(!quit)
+	while(1)
 	{
-		std::cin >> buff;
+		std::cout << "The program only accepts ADD, SEARCH and EXIT\n>";
+		if (!std::getline(std::cin, buff) || std::cin.eof() || buff.compare("EXIT") == 0 || std::cin.fail())
+			break;
+		if (buff.empty())
+			continue;
 		if (buff.compare("ADD") == 0)
-			std::cout << "ADD";
+			phonebook.add();
 		if (buff.compare("SEARCH") == 0)
-			std::cout << "SEARCH";
-		if (buff.compare("EXIT") == 0)
-			quit = !quit;
+			phonebook.searh();
 	}
 	return (0);
 }

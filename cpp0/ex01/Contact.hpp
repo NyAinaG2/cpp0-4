@@ -1,7 +1,7 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 # include "header.hpp"
-//index, first_name, last_name, nickname, Input the
+
 class Contact
 {
 	public:
@@ -9,6 +9,7 @@ class Contact
 		std::string last_name;
 		std::string nickname;
 		std::string phone_number;
+		std::string secret;
 		Contact(void);
 		~Contact(void);
 };

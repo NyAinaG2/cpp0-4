@@ -6,12 +6,12 @@
 class PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact _contacts[CONTACTS_LEN];
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
 		void	add(void);
-		void	searh(void);
+		void	search(void);
 };
 
 #endif

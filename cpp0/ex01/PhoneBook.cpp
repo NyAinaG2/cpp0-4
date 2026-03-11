@@ -3,32 +3,33 @@
 
 PhoneBook::PhoneBook(void)
 {
-	(void)this->contacts;
-	std::cout << "New Phone Book" << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Destroy Phone Book" << std::endl;
 	return ;
 }
 
 void	PhoneBook::add(void)
 {
-	std::cout << "Add Phone Book" << std::endl;
-	return ;
+	std::cout << "Adding new Contact" << std::endl;
+	int index = 0;
+	while(index < CONTACTS_LEN && !this->_contacts[index]._infos[0].empty())
+		index++;
+	index = index >= CONTACTS_LEN ? 0 : index;
+	this->_contacts[index].set_infos();
 }
 
-void	PhoneBook::searh(void)
+void	PhoneBook::search(void)
 {
-	int i = 0;
-	while (i < 5)
+	std::cout << "Search Phone Book" << std::endl;
+	for (int i = 0; i < CONTACTS_LEN; i++)
 	{
-		std::cout << this->contacts[0].first_name;
-		i++;
+		std::cout << i << " => ";
+		for (int j = 0; j < FIELD_LEN; j++)
+			std::cout << j << " : "<< this->_contacts[i]._infos[j] << " ";
+		std::cout <<  std::endl;
 	}
-
-	std::cout << "Searh Phone Book" << std::endl;
 	return ;
 }

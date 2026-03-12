@@ -2,45 +2,47 @@
 #include "Contact.hpp"
 #include <algorithm>
 
-Contact::Contact(void)
-{
-	return ;
-}
+Contact::Contact(void) {}
 
-Contact::~Contact(void)
-{
-	return ;
-}
+Contact::~Contact(void) {}
 
-bool	isNotPrintable(const std::string str)
+Contact::Contact(const Contact &source)
 {
-	for (size_t i = 0; str[i]; i++)
-		if (!std::isprint(str[i]))
-			return (true);
-	return (false);
+	for (int i = 0; i < FIELD_LEN; i++)
+		this->_infos[i] = source._infos[i];
 }
 
 void	Contact::set_infos(void)
 {
+	Contact	tmp;
 	for (size_t i = 0; i < FIELD_LEN; i++)
 	{
-		std::cout << i << " >";
-		if (!std::getline(std::cin, this->_infos[i]) || std::cin.eof())
+		std::cout << g_fields[i] << " >";
+		if (!std::getline(std::cin, tmp._infos[i]) || std::cin.eof())
 			std::exit(0);
-		if (this->_infos[i].empty() || isNotPrintable(this->_infos[i]))
+		if (tmp._infos[i].empty() || isNotPrintable(tmp._infos[i]))
 		{
-			std::cout << "Input should be not empty and doesn't contain unpritable char" << std::endl;
-			for (size_t j = 0; j < FIELD_LEN; j++)
-				this->_infos[j].clear();
+			std::cout << "Invalid input" << std::endl;
+			return ;
+		}
+		if (i == NUM_INDEX && !isNumber(tmp._infos[i]))
+		{
+			std::cout << "Invalid phone number" << std::endl;
 			return ;
 		}
 	}
+	*this = tmp;
 	return ;
 }
 
 void	Contact::display_infos(void)
 {
+	if (this->_infos[0].empty())
+	{
+		std::cout << "Contact not found" << std::endl;
+		return ;
+	}
 	for (size_t i = 0; i < FIELD_LEN; i++)
-		std::cout << i << " : "<< this->_infos[i] << std::endl;
+		std::cout << g_fields[i] << " : "<< this->_infos[i] << std::endl;
 	return ;
 }

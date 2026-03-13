@@ -32,16 +32,16 @@ int	main(void)
 	std::string buff;
 	while(1)
 	{
-		std::cout << "The program only accepts ADD, SEARCH and EXIT\n>";
+		std::cout << "(ADD | SEARCH | EXIT)>";
 		if (!std::getline(std::cin, buff) || std::cin.eof())
 			std::exit(0);
 		if (buff.empty())
 			continue;
-		if (buff.compare("ADD") == 0)
+		if (buff == "ADD")
 			phonebook.add();
-		if (buff.compare("SEARCH") == 0)
+		if (buff == "SEARCH")
 			phonebook.search();
-		if (buff.compare("EXIT") == 0)
+		if (buff == "EXIT")
 			std::exit(0);
 		std::cin.clear();
 	}

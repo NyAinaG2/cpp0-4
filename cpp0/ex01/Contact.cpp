@@ -1,6 +1,5 @@
 #include "header.hpp"
 #include "Contact.hpp"
-#include <algorithm>
 
 Contact::Contact(void) {}
 
@@ -12,30 +11,38 @@ Contact::Contact(const Contact &source)
 		this->_infos[i] = source._infos[i];
 }
 
-void	Contact::set_infos(void)
+bool	Contact::set_infos(void)
 {
 	Contact	tmp;
 	for (size_t i = 0; i < FIELD_LEN; i++)
 	{
-		std::cout << g_fields[i] << " >";
+		std::cout << "(ADD) "<< g_fields[i] << ">";
 		if (!std::getline(std::cin, tmp._infos[i]) || std::cin.eof())
 			std::exit(0);
 		if (tmp._infos[i].empty() || isNotPrintable(tmp._infos[i]))
 		{
 			std::cout << "Invalid input" << std::endl;
-			return ;
+			return (false);
 		}
-		if (i == NUM_INDEX && !isNumber(tmp._infos[i]))
+		if (i == 3 && !isNumber(tmp._infos[i]))
 		{
 			std::cout << "Invalid phone number" << std::endl;
-			return ;
+			return (false);
 		}
 	}
 	*this = tmp;
-	return ;
+	return (true);
 }
 
-void	Contact::display_infos(void)
+void	Contact::display_in_row(int index)
+{
+	std::cout << std::setw(10) << index + 1 << "|";
+	for (int j = 0; j < FIELD_LEN - 2; j++)
+		std::cout << std::setw(10) << putstr_inrow(this->_infos[j]) << (j != FIELD_LEN - 3 ? "|" : "");
+	std::cout <<  std::endl;
+}
+
+void	Contact::display_detailed_infos(void)
 {
 	if (this->_infos[0].empty())
 	{
@@ -44,5 +51,8 @@ void	Contact::display_infos(void)
 	}
 	for (size_t i = 0; i < FIELD_LEN; i++)
 		std::cout << g_fields[i] << " : "<< this->_infos[i] << std::endl;
-	return ;
+}
+bool	Contact::empty(void) const
+{
+	return this->_infos[0].empty();
 }

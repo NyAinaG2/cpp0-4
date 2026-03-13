@@ -4,13 +4,7 @@ void	ft_putstr_out(char *str)
 {
 	int	i = 0;
 	while (str[i])
-	{
-		if (std::isalpha(str[i]))
-			std::cout << (char)std::toupper(str[i]);
-		else
-			std::cout << (char)str[i];
-		i++;
-	}
+		std::cout << (char)std::toupper(str[i++]);
 }
 
 int	main(int argc, char **argv)

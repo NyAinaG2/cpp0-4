@@ -3,6 +3,7 @@
 # include <iomanip>
 # include <iostream>
 # include <cstdlib>
+# include <csignal>
 # define CONTACTS_LEN 8
 # define FIELD_LEN 5
 extern std::string g_fields[FIELD_LEN];

@@ -26,10 +26,17 @@ std::string putstr_inrow(const std::string &s)
 	return s;
 };
 
+void	sigint_handler(int signal)
+{
+	(void)signal;
+	std::exit(0);
+}
+
 int	main(void)
 {
 	PhoneBook	phonebook;
 	std::string buff;
+	std::signal(SIGINT, sigint_handler);
 	while(1)
 	{
 		std::cout << "(ADD | SEARCH | EXIT)>";

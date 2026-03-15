@@ -4,9 +4,11 @@ int	main(void)
 {
 	Zombie* zombieHeap = newZombie("Heap");
 	Zombie zombieStack("Stack");
-	zombieHeap->announce();
+	if (zombieHeap != NULL)
+		zombieHeap->announce();
 	zombieStack.announce();
 	randomChump("Chump");
-	delete zombieHeap;
+	if (zombieHeap != NULL)
+		delete zombieHeap;
 	return (0);
 }

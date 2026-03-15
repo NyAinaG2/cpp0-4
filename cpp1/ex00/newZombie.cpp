@@ -2,6 +2,8 @@
 
 Zombie* newZombie( std::string name )
 {
-	Zombie	*zombie = new Zombie(name);
+	Zombie	*zombie = new(std::nothrow) Zombie(name);
+	if (zombie == NULL)
+		return (NULL);
 	return (zombie);
 }

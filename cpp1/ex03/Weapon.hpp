@@ -1,0 +1,15 @@
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+# include <iostream>
+class Weapon
+{
+	private:
+		std::string	_type;
+	public:
+		void	setType( std::string type );
+		std::string getType( void ) const;
+		Weapon( std::string type );
+		~Weapon( void );
+};
+
+#endif

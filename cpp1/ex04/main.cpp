@@ -14,14 +14,14 @@ int main(int argc, char *argv[])
 		return (0);
 	std::string		outfile = argv[1];
 	outfile += ".replace";
+	inBuffer << infile.rdbuf();
+	std::string	buff = inBuffer.str();
 	std::ofstream	fd_out(outfile.c_str());
-	if(!fd_out.is_open())
+	if(!fd_out.is_open() || buff.empty())
 	{
 		infile.close();
 		return (0);
 	}
-	inBuffer << infile.rdbuf();
-	std::string	buff = inBuffer.str();
 	std::size_t pos;
 	while ((pos = buff.find(s1)) != std::string::npos && s1.length() > 0)
 	{

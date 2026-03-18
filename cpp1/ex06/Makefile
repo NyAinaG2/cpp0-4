@@ -1,7 +1,7 @@
-NAME = horde
+NAME = harlFilter
 CC = c++
 C_FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC_FILES = ./main.cpp ./Zombie.cpp ./zombieHorde.cpp
+SRC_FILES = ./main.cpp ./Harl.cpp
 OBJ_FILES = ${SRC_FILES:.cpp=.o}
 
 all : ${NAME}

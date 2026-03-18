@@ -2,26 +2,8 @@
 #include <fstream>
 #include <sstream>
 
-int main(int argc, char *argv[])
+void	replace(std::string& buff, std::ofstream& fd_out, std::string& s1, std::string& s2)
 {
-	if (argc != 4)
-		return 0;
-	std::stringstream	inBuffer;
-	std::ifstream		infile(argv[1]);
-	std::string			s1 = argv[2];
-	std::string			s2 = argv[3];
-	if (!infile.is_open())
-		return (0);
-	std::string		outfile = argv[1];
-	outfile += ".replace";
-	inBuffer << infile.rdbuf();
-	std::string	buff = inBuffer.str();
-	std::ofstream	fd_out(outfile.c_str());
-	if(!fd_out.is_open() || buff.empty())
-	{
-		infile.close();
-		return (0);
-	}
 	std::size_t pos;
 	while ((pos = buff.find(s1)) != std::string::npos && s1.length() > 0)
 	{
@@ -32,6 +14,36 @@ int main(int argc, char *argv[])
 		}
 	}
 	fd_out << buff;
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc != 4)
+	{
+		std::cerr << "Arguments count error" << std::endl;
+		return (0);
+	}
+	std::stringstream	inBuffer;
+	std::ifstream		infile(argv[1]);
+	std::string			s1 = argv[2];
+	std::string			s2 = argv[3];
+	if (!infile.is_open())
+	{
+		std::cerr << "Fail to open the infile" << std::endl;
+		return (0);
+	}
+	std::string		outfile = argv[1];
+	outfile += ".replace";
+	inBuffer << infile.rdbuf();
+	std::string	buff = inBuffer.str();
+	std::ofstream	fd_out(outfile.c_str());
+	if(!fd_out.is_open())
+	{
+		std::cerr << "Fail to open the outfile" << std::endl;
+		infile.close();
+		return (0);
+	}
+	replace(buff, fd_out, s1, s2);
 	infile.close();
 	fd_out.close();
 	return 0;

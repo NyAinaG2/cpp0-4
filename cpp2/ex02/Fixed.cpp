@@ -48,63 +48,63 @@ int	Fixed::toInt(void)const
 	return (this->_raw >> this->_fract);
 }
 
-bool Fixed::operator>(Fixed fixed) const
+bool Fixed::operator>(const Fixed& fixed) const
 {
 	return (this->_raw > fixed._raw);
 }
 
-bool Fixed::operator<(Fixed fixed) const
+bool Fixed::operator<(const Fixed& fixed) const
 {
 	return (this->_raw < fixed._raw);
 }
 
-bool Fixed::operator>=(Fixed fixed) const
+bool Fixed::operator>=(const Fixed& fixed) const
 {
 	return (this->_raw >= fixed._raw);
 }
 
-bool Fixed::operator<=(Fixed fixed) const
+bool Fixed::operator<=(const Fixed& fixed) const
 {
 	return (this->_raw <= fixed._raw);
 }
 
-bool Fixed::operator==(Fixed fixed) const
+bool Fixed::operator==(const Fixed& fixed) const
 {
 	return (this->_raw == fixed._raw);
 }
 
-bool Fixed::operator!=(Fixed fixed) const
+bool Fixed::operator!=(const Fixed& fixed) const
 {
 	return (this->_raw != fixed._raw);
 }
 
-float Fixed::operator+(Fixed fixed) const
+float Fixed::operator+(const Fixed& fixed) const
 {
 	return (this->toFloat() + fixed.toFloat());;
 }
 
-float Fixed::operator-(Fixed fixed) const
+float Fixed::operator-(const Fixed& fixed) const
 {
 	return (this->toFloat() - fixed.toFloat());
 }
 
-float Fixed::operator*(Fixed fixed) const
+float Fixed::operator*(const Fixed& fixed) const
 {
 	return (this->toFloat() * fixed.toFloat());
 }
 
-float Fixed::operator/(Fixed fixed) const
+float Fixed::operator/(const Fixed& fixed) const
 {
 	return (this->toFloat() / fixed.toFloat());
 }
 
-Fixed Fixed::operator++()
+Fixed& Fixed::operator++()
 {
 	++this->_raw;
 	return (*this);
 }
 
-Fixed Fixed::operator--()
+Fixed& Fixed::operator--()
 {
 	--this->_raw;
 	return (*this);;

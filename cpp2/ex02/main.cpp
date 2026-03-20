@@ -4,7 +4,7 @@ int main(void)
 {
 	Fixed a;
 	Fixed const b(Fixed(5.0f) * Fixed(5));
-	std::cout << a << std::endl;
+	std::cout << a << "sdfsdf" << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;

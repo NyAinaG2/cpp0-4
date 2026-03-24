@@ -35,6 +35,17 @@ int main(void)
 	}
 	std::cout << std::endl;
 	{
+		Dog dogjah;
+		dogjah.getBrain()->setIdea(0, "666");
+		{
+			Dog jahdog = dogjah;
+			jahdog.getBrain()->setIdea(0, "999");
+			std::cout << jahdog.getBrain()->getIdea(0) << std::endl;
+		}
+		std::cout << dogjah.getBrain()->getIdea(0) << std::endl;
+	}
+	std::cout << std::endl;
+	{
 		Cat cat1;
 		Cat cat2 = cat1;
 		Cat cat3;
